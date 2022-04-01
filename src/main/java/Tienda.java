@@ -2,12 +2,12 @@ import java.util.ArrayList;
 
 public class Tienda {
     private String nombre;
-    private ArrayList<Objeto> objetosDisponibles;
-    public boolean comprar(double dinero, int cantidad, Objeto objeto){
+    private ArrayList<Item> objetosDisponibles;
+    public boolean comprar(double dinero, int cantidad, Item objeto){
 
         return false;
     }
-    public boolean vender(){
+    public boolean vender(Item objeto, int cantidad){
 
         return false;
     }
