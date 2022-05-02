@@ -27,4 +27,10 @@ public class Character {
     public void setGenre(char genre) {
         this.genre = genre;
     }
+
+    public Character(String name, int lvl, char genre) {
+        this.name = name;
+        this.lvl = lvl;
+        this.genre = genre;
+    }
 }
