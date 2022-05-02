@@ -1,4 +1,6 @@
+import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Trainer extends Character {
     //region-String
@@ -74,4 +76,21 @@ public class Trainer extends Character {
     public Trainer(String name, int lvl, char genre) {
         super(name, lvl, genre);
     }
+    public void tirarObjeto(){
+        Scanner sc= new Scanner(System.in);
+        int se;
+        System.out.println(pokedex.toString());
+        System.out.println("Cual objeto quieres tirar?");
+        se= sc.nextInt();
+        pokedex.remove(se);
+    }
+    //este le debo porque no recuerdo como se hace ;c
+    //intercambiar
+    //entrenador opuesto muestra pokedex
+    //escojo el pokemon que quiero
+    //le proppongo uno de mi pokedex
+    //y con random true o false acepta
+    //si true
+    //get y add (mas remove)
+
 }
