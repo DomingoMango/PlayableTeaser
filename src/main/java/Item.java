@@ -4,6 +4,7 @@ public class Item {
     private String name;
     private String tipo;
 
+
     public Item(double cost, int qty, String name, String tipo) {
         this.cost = cost;
         this.qty = qty;
@@ -41,5 +42,15 @@ public class Item {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "cost=" + cost +
+                ", qty=" + qty +
+                ", name='" + name + '\'' +
+                ", tipo='" + tipo + '\'' +
+                '}';
     }
 }
