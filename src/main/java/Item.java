@@ -1,4 +1,4 @@
-public class Item {
+public abstract class Item {
     private double cost;
     private int qty;
     private String name;
@@ -11,6 +11,7 @@ public class Item {
         this.name = name;
         this.tipo = tipo;
     }
+    public abstract boolean usar(Pokemon pokemon);
 
     public double getCost() {
         return cost;

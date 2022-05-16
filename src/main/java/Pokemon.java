@@ -11,8 +11,9 @@ public class Pokemon extends Character{
     private boolean legendary;
     private String weakAg;
     private String strongAg;
+    private int speed, strength;
 
-    public Pokemon(String name, int lvl, char genre, String type, Habilidad habilidad, int hp, boolean legendary, String weakAg, String strongAg) {
+    public Pokemon(String name, int lvl, char genre, String type, Habilidad habilidad, int hp, boolean legendary, String weakAg, String strongAg, int speed, int strength) {
         super(name, lvl, genre);
         this.type = type;
         this.habilidad = habilidad;
@@ -20,7 +21,27 @@ public class Pokemon extends Character{
         this.legendary = legendary;
         this.weakAg = weakAg;
         this.strongAg = strongAg;
+        this.speed = speed;
+        this.strength = strength;
     }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+
 
     public String getType() {
         return type;

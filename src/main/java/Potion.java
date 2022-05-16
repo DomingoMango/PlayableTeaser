@@ -13,4 +13,9 @@ public class Potion extends Item{
     public void setEffect(String effect) {
         this.effect = effect;
     }
+
+    @Override
+    public boolean usar(Pokemon pokemon) {
+        return false;
+    }
 }
