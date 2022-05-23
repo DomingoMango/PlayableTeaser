@@ -28,4 +28,11 @@ public class Berry extends Item {
     public void setEffect(String effect) {
         this.effect = effect;
     }
+
+    @Override
+    public String toString() {
+        return "Berry{" +
+                "effect='" + effect + '\'' +
+                '}';
+    }
 }

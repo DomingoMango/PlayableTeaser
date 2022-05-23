@@ -32,4 +32,13 @@ public class Habilidad {
     public void setAtkBase(int atkBase) {
         AtkBase = atkBase;
     }
+
+    @Override
+    public String toString() {
+        return "Habilidad{" +
+                "nombre='" + nombre + '\'' +
+                ", desc='" + desc + '\'' +
+                ", AtkBase=" + AtkBase +
+                '}';
+    }
 }

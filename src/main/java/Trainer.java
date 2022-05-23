@@ -93,4 +93,16 @@ public class Trainer extends Character {
     //si true
     //get y add (mas remove)
 
+
+    @Override
+    public String toString() {
+        return "Trainer{" +
+                "region='" + region + '\'' +
+                ", pokePet=" + pokePet +
+                ", TOWon=" + TOWon +
+                ", pokedex=" + pokedex +
+                ", nombre='" + nombre + '\'' +
+                ", backpack=" + backpack +
+                '}';
+    }
 }

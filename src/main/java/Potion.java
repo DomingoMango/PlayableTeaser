@@ -18,4 +18,11 @@ public class Potion extends Item{
     public boolean usar(Pokemon pokemon) {
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "Potion{" +
+                "effect='" + effect + '\'' +
+                '}';
+    }
 }

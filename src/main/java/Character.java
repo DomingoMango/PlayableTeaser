@@ -33,4 +33,13 @@ public class Character {
         this.lvl = lvl;
         this.genre = genre;
     }
+
+    @Override
+    public String toString() {
+        return "Character{" +
+                "name='" + name + '\'' +
+                ", lvl=" + lvl +
+                ", genre=" + genre +
+                '}';
+    }
 }

@@ -26,4 +26,11 @@ public class Pokeball extends Item {
         }
 
     }
+
+    @Override
+    public String toString() {
+        return "Pokeball{" +
+                "efficiency=" + efficiency +
+                '}';
+    }
 }

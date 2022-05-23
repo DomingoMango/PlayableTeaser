@@ -94,4 +94,18 @@ public class Pokemon extends Character{
     public Pokemon(String name, int lvl, char genre) {
         super(name, lvl, genre);
     }
+
+    @Override
+    public String toString() {
+        return "Pokemon{" +
+                "type='" + type + '\'' +
+                ", habilidad=" + habilidad +
+                ", hp=" + hp +
+                ", legendary=" + legendary +
+                ", weakAg='" + weakAg + '\'' +
+                ", strongAg='" + strongAg + '\'' +
+                ", speed=" + speed +
+                ", strength=" + strength +
+                '}';
+    }
 }
