@@ -1,17 +1,51 @@
-import java.io.Console;
+import com.sun.tools.javac.Main;
+
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
+import java.util.Scanner;
 
 public class main implements UtilInterface{
-    public static void main(String[] args) {
+    static ArrayList<Habilidad> habilidades = new ArrayList<>();
+    static Habilidad habilidad = new Habilidad("Ataque rastrero","Pega un ataque rastrero",50);
+    static Habilidad habilidad1 = new Habilidad("Zape","zape",99);
+    static Habilidad habilidad2 = new Habilidad("Zape con mano mojada","Zape pero con mano mojada",999);
+    static ArrayList<String> tiposPokemon;
+    public static void main(String[] args) throws InterruptedException {
 
-
-
+        long initTime= System.currentTimeMillis();
+        Thread.sleep(1500);
+        habilidades.add(habilidad);
+        habilidades.add(habilidad1);
+        habilidades.add(habilidad2);
+        tiposPokemon = new ArrayList<>(Arrays.asList("agua","fuego","tierra","Aire"));
+        main objMain = new main();
+        objMain.playTime(initTime,0);
+        //Menu:
+        //while respuesta == 0 salir
+        //usuario escoge
+        //Explorar
+        int ans=1;
+        Scanner sc= new Scanner(System.in);
+        while(ans!=0){
+            objMain.mostrarMenu();
+            ans= sc.nextInt();
+            if (ans==1){
+                int stp=1;
+                Thread.sleep(350);
+                System.out.println("DIOS UN POKEMON???");
+                System.out.println(objMain.createPokRandom());
+                System.out.println("Quieres seguir explorando?");
+                stp= sc.nextInt();
+            }
+        }
 
     }
 
     @Override
     public void playTime(long initTime, long finalTime) {
         //System.currentTimeMillis();
+        finalTime=System.currentTimeMillis()-initTime;
         System.out.println("Su tiempo de juego es: "+ finalTime);
 
 
@@ -28,14 +62,29 @@ public class main implements UtilInterface{
 
     }
 
+
+
     @Override
-    public Pokemon createPokRandom() {
-        return null;
+    public Pokemon createPokRandom(Habilidad habilidad, String type) {
+
+        Random random = new Random();
+        int tamNombre = randNames(type).length;
+        int name = random.nextInt(tamNombre);
+        int hp = random.nextInt(3000);
+        boolean legend=random.nextBoolean();
+        String[] weakStrong = weakAndStrongRandm(type);
+        int atk = random.nextInt(1200);
+        int speed = random.nextInt(500);
+        int lvl = random.nextInt(100);
+        char genre = random.nextInt(10) < 5 ? 'f' : 'm';
+        return new Pokemon(randNames(type)[name],lvl,genre,type,habilidad,hp,legend,weakStrong[0],weakStrong[1],speed,atk);
     }
 
     @Override
     public <R> R getRandom(ArrayList<R> arrayList) {
-        return null;
+        Random random = new Random();
+        int index = random.nextInt(arrayList.size()-1);
+        return arrayList.get(index);
     }
 
     @Override
@@ -46,11 +95,24 @@ public class main implements UtilInterface{
 
     @Override
     public String[] randNames(String type) {
-        int rng= (int) Math.random();
+        String[] naming = new String[10];
+        switch(type){
+            case "fuego":
+                naming[0]="Azula";
+                naming[1]="Torchic";
+                naming[2]="Blaziken";
+                naming[3]="Groudon";
+                break;
+            case "agua":
+                naming[0]="Mi tio";
+                naming[1]="Mi tio";
+                naming[2]="Mi tio";
+                naming[3]="Mi tio";
+                break;
 
-        String[] fire = new String[10];
-        fire[0]="Padrino";
 
-        return new String[]{fire[0]};
+        }
+
+        return new String[]{naming[0]};
     }
 }
