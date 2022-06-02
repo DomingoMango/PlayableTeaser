@@ -1,4 +1,4 @@
-public class Pokemon extends Character{
+public abstract class Pokemon extends Character{
     //tipo-String
     //habilidad-Habilidag
     //hp-int
@@ -94,6 +94,41 @@ public class Pokemon extends Character{
     public Pokemon(String name, int lvl, char genre) {
         super(name, lvl, genre);
     }
+
+    @Override
+    public boolean Pelear(Pokemon pokemonEn) {
+        
+        if (this.strongAg.equals(pokemonEn.getType())) {
+            setStrength((int) (getStrength()*1.5));
+            setSpeed((int) (getSpeed()+1.5));
+            pokemonEn.habilidad.setAtkBase(this.habilidad.getAtkBase() - 20);
+
+
+        } else if (pokemonEn.getStrongAg().equals(this.type)) {
+            setStrength(getStrength()-20);
+            pokemonEn.setStrength((int) (pokemonEn.getStrength()*1.25));
+
+        } else {
+        }
+        do {
+            if (this.speed >= pokemonEn.speed) {
+
+
+                pokemonEn.setHp(pokemonEn.getHp()-(int) Math.sqrt(getStrength()) * habilidad.getAtkBase());
+
+                if (pokemonEn.getHp() <= 0) {
+                    return true;
+                }
+            } else {
+                this.hp -= (int) Math.sqrt(pokemonEn.getStrength()) * pokemonEn.habilidad.getAtkBase();
+            } if(getHp()<=0){
+                return false;
+            }
+        } while (true);
+
+
+    }
+
 
     @Override
     public String toString() {
