@@ -2,7 +2,7 @@ import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Trainer extends Character {
+public abstract class Trainer extends Character {
     //region-String
     //pokemonMascota-Pokemon
     //TorneosGanados-int
