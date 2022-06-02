@@ -1,5 +1,6 @@
 import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Trainer extends Character {
@@ -76,22 +77,87 @@ public class Trainer extends Character {
     public Trainer(String name, int lvl, char genre) {
         super(name, lvl, genre);
     }
-    public void tirarObjeto(){
-        Scanner sc= new Scanner(System.in);
-        int se;
-        System.out.println(pokedex.toString());
-        System.out.println("Cual objeto quieres tirar?");
-        se= sc.nextInt();
-        pokedex.remove(se);
+    public void mostrarMochila(){
+        System.out.println("Los objtos diponibles son: ");
+        int indice=1;
+        for (Item objeto:backpack
+        ) {
+            System.out.println(indice+".- ");
+            System.out.println(objeto);
+            indice++;
+
+        }
     }
-    //este le debo porque no recuerdo como se hace ;c
-    //intercambiar
-    //entrenador opuesto muestra pokedex
-    //escojo el pokemon que quiero
-    //le proppongo uno de mi pokedex
-    //y con random true o false acepta
-    //si true
-    //get y add (mas remove)
+    public void mostrarPokedex(ArrayList<Pokemon>Pokemon){
+        System.out.println("Los pokemones disponibles son: ");
+        int index=1;
+        for (Pokemon object:Pokemon
+        ) {
+            System.out.println(index+".- ");
+            System.out.println(object);
+            index++;
+        }
+    }
+
+    @Override
+    public boolean Pelear(Pokemon pokemonEn) {
+
+        ArrayList<Pokemon> fightPok = new ArrayList<>();
+        mostrarPokedex(pokedex);
+        System.out.println("Escoge tres pokemon");
+        Scanner scanner = new Scanner(System.in);
+
+        for (int i = 0; i < 3; i++) {
+            System.out.println("Ingresa el pokemon");
+            fightPok.add(pokedex.get(scanner.nextInt() - 1));
+
+        }
+        int respuesta = 0;
+        do {
+            if (fightPok.size() != 0) {
+
+                System.out.println("1. Pelear");
+                System.out.println("2. Usar posion");
+                System.out.println("3. Huir");
+                respuesta = scanner.nextInt();
+
+                if (respuesta == 1) {
+                    System.out.println("Escoge el pokemon para pelear");
+                    mostrarPokedex(fightPok);
+                    int eleccion = scanner.nextInt();
+                    if (!fightPok.get(eleccion).pelear(pokemonEn)) {
+                        fightPok.remove(eleccion);
+                    } else {
+                        return true;
+                    }
+                } else if (respuesta == 2) {
+                    //
+                    mostrarMochila();
+
+
+                    System.out.println("Escoge la baya o pocion para el pokemon");
+                    int eleccion = scanner.nextInt();
+                    System.out.println("Escoge el pokemon para dar Baya o Pocion");
+                    mostrarPokedex(fightPok);
+                    backpack.get(eleccion - 1).usar(fightPok.get(scanner.nextInt()));
+
+                } else {
+                    System.out.println("Huyendo...");
+                    return false;
+
+                }
+
+            }
+
+
+            return false;
+        } while (respuesta != 0);
+    }
+
+    @Override
+    public boolean pelear(Pokemon trainer) {
+        return false;
+    }
 
 
     @Override
