@@ -1,4 +1,4 @@
-public class Character {
+public abstract class Character {
 
     protected String name;
     protected int lvl;
@@ -33,6 +33,10 @@ public class Character {
         this.lvl = lvl;
         this.genre = genre;
     }
+
+    public abstract boolean Pelear(Pokemon pokemonEn);
+
+    public abstract boolean pelear(Pokemon trainer);
 
     @Override
     public String toString() {

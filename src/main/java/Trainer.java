@@ -1,9 +1,8 @@
-import java.sql.SQLOutput;
 import java.util.ArrayList;
-import java.util.Random;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Trainer extends Character {
+public abstract class Trainer extends Character {
     //region-String
     //pokemonMascota-Pokemon
     //TorneosGanados-int
@@ -77,8 +76,18 @@ public class Trainer extends Character {
     public Trainer(String name, int lvl, char genre) {
         super(name, lvl, genre);
     }
-    public void mostrarMochila(){
-        System.out.println("Los objtos diponibles son: ");
+    public boolean tirarObjeto (int ind) {
+        try {
+            backpack.remove(ind);
+            return true;
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Ese objeto q es o q einsten");
+            return false;
+        }
+    }
+
+        public void mostrarMochila(){
+        System.out.println("Los objetos disponibles son: ");
         int indice=1;
         for (Item objeto:backpack
         ) {
@@ -89,7 +98,7 @@ public class Trainer extends Character {
         }
     }
     public void mostrarPokedex(ArrayList<Pokemon>Pokemon){
-        System.out.println("Los pokemones disponibles son: ");
+        System.out.println("Los pokemon disponibles son: ");
         int index=1;
         for (Pokemon object:Pokemon
         ) {
@@ -110,6 +119,23 @@ public class Trainer extends Character {
         for (int i = 0; i < 3; i++) {
             System.out.println("Ingresa el pokemon");
             fightPok.add(pokedex.get(scanner.nextInt() - 1));
+            try {
+
+                int indice= scanner.nextInt();
+
+                fightPok.add(pokedex.get(scanner.nextInt()-1));
+
+            }catch (InputMismatchException e){
+                System.out.println("Ingrese un numero");
+                scanner.nextLine();
+                i--;
+
+            }catch (IndexOutOfBoundsException e){
+                System.out.println("Este pokemon no existe, ingrese uno que exita");
+
+                i--;
+
+            }
 
         }
         int respuesta = 0;
